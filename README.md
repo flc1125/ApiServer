@@ -4,8 +4,6 @@
 
 ## 部署说明
 
-### 说明
-
 > 现有API基于laravel框架开发，本次介绍也针对laravel。可根据文档自行调整，以适用其他框架下使用
 
 ### 数据库相关
@@ -14,23 +12,29 @@
 
 ```sql
 CREATE TABLE `prefix_apps` (
-  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '自增长',
-  `app_id` varchar(60) NOT NULL COMMENT 'appid',
-  `app_secret` varchar(100) NOT NULL COMMENT '密钥',
-  `app_name` varchar(200) NOT NULL COMMENT 'app名称',
-  `app_desc` text COMMENT '描述',
-  `status` tinyint(2) DEFAULT '0' COMMENT '生效状态',
-  `created_at` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `updated_at` int(10) NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `id` INT(10) NOT NULL AUTO_INCREMENT COMMENT '自增长',
+  `app_id` VARCHAR(60) NOT NULL COMMENT 'appid',
+  `app_secret` VARCHAR(100) NOT NULL COMMENT '密钥',
+  `app_name` VARCHAR(200) NOT NULL COMMENT 'app名称',
+  `app_desc` TEXT COMMENT '描述',
+  `status` TINYINT(2) DEFAULT '0' COMMENT '生效状态',
+  `created_at` INT(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `updated_at` INT(10) NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `app_id` (`app_id`),
   KEY `status` (`status`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='应用表';
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='应用表';
 ```
 
 ### 目录相关
 
-
+|标题|路径|
+|----|----|
+|API核心目录|`app/Services/ApiServer/`|
+|API接口目录|`app/Services/ApiServer/Response/`|
+|apps数据库模型|`app/Models/App.php`|
+|路由配置|`app/Http/routes.php`|
+|API入口控制器|`app/Http/Controllers/Api/RouterController.php`|
 
 ## API文档及开发规范
 
@@ -68,6 +72,62 @@ CREATE TABLE `prefix_apps` (
 ```json
 // 成功
 {
-    
+    "status": true,
+    "code": "200",
+    "msg": "成功",
+    "data": {
+        "time": "2016-08-02 12:07:09"
+    }
+}
+
+// 失败
+{
+    "status": false,
+    "code": "1001",
+    "msg": "[app_id]缺失"
 }
 ```
+
+### API开发规范
+
+#### API接口命名规范（method）
+
+- 接口名称统一小写字母
+- 多单词用`.`隔开
+- 对应的类文件（目录：`app/Services/ApiServer/Response/`）；以接口名去`.`，再首字母大写作为类名及文件名。如接口名：`user.add`，对应的类文件及类名为：`UserAdd`
+- 接口命名规范
+    - 命名字母按功能或模块从大到小划分，依次编写；如后台用户修改密码：'admin.user.password.update'
+    - 字母最后单词为操作。查询:`get`;新增:`add`;更新:`update`;删除:`delete`;上传:`upload`;等
+
+#### 错误码
+
+> 错误码配置：`app/Services/ApiServer/Error.php`
+
+**命名规范：**
+
+|类型|长度|说明|
+|----|----|----|
+|系统码|3|同`http`状态码|
+|公共错误码|4|公共参数错误相关的错误码|
+|业务错误码|6+|2位业务码+4位错误码，不足补位|
+
+**现有错误码：**
+
+|错误码|错误内容|
+|----|----|
+|200|成功|
+|400|未知错误|
+|401|无此权限|
+|500|服务器异常|
+|1001|[app_id]缺失|
+|1002|[app_id]不存在或无权限|
+|1003|[method]缺失|
+|1004|[format]错误|
+|1005|[sign_method]错误|
+|1006|[sign]缺失|
+|1007|[sign]签名错误|
+|1008|[method]方法不存在|
+|1009|run方法不存在，请联系管理员|
+|1010|[nonce]缺失|
+|1011|[nonce]必须为字符串|
+|1012|[nonce]长度必须为1-32位|
