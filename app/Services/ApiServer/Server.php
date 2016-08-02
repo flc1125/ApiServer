@@ -112,7 +112,7 @@ class Server
         // C. 校验签名
         $signRes = $this->checkSign($this->params);
         if (! $signRes || ! $signRes['status']) {
-            //return $this->response(['status' => false, 'code' => $signRes['code']]);
+            return $this->response(['status' => false, 'code' => $signRes['code']]);
         }
 
         // D. 校验接口名
