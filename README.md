@@ -131,3 +131,7 @@ CREATE TABLE `prefix_apps` (
 |1010|[nonce]缺失|
 |1011|[nonce]必须为字符串|
 |1012|[nonce]长度必须为1-32位|
+
+#### API DEMO 示例
+
+文件路径：`app/Services/ApiServer/Response/Demo.php`
