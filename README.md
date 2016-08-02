@@ -43,6 +43,7 @@ CREATE TABLE `prefix_apps` (
 #### 请求地址及请求方式
 
 > 请求地址：`/api/router`;
+>
 > 请求方式：`POST`/`GET`
 
 #### 公共参数
