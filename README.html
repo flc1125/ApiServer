@@ -1081,24 +1081,24 @@ body .markdown-body
 <div class="toc">
 <ul>
 <li><a href="#api">API服务端架构代码</a><ul>
-<li><a href="#_1">部署说明</a><ul>
-<li><a href="#_2">数据库相关</a></li>
-<li><a href="#_3">目录相关</a></li>
+<li><a href="#1">1. 部署说明</a><ul>
+<li><a href="#11">1.1. 数据库相关</a></li>
+<li><a href="#12">1.2. 目录相关</a></li>
 </ul>
 </li>
-<li><a href="#api_1">API文档及开发规范</a><ul>
-<li><a href="#api_2">API调用协议</a><ul>
-<li><a href="#_4">请求地址及请求方式</a></li>
-<li><a href="#_5">公共参数</a></li>
-<li><a href="#_6">业务参数</a></li>
-<li><a href="#_7">签名规则</a></li>
-<li><a href="#_8">返回结果</a></li>
+<li><a href="#2-api">2. API文档及开发规范</a><ul>
+<li><a href="#21-api">2.1. API调用协议</a><ul>
+<li><a href="#211">2.1.1. 请求地址及请求方式</a></li>
+<li><a href="#212">2.1.2. 公共参数</a></li>
+<li><a href="#213">2.1.3. 业务参数</a></li>
+<li><a href="#214">2.1.4. 签名规则</a></li>
+<li><a href="#215">2.1.5. 返回结果</a></li>
 </ul>
 </li>
-<li><a href="#api_3">API开发规范</a><ul>
-<li><a href="#apimethod">API接口命名规范（method）</a></li>
-<li><a href="#_9">错误码</a></li>
-<li><a href="#api-demo">API DEMO 示例</a></li>
+<li><a href="#22-api">2.2. API开发规范</a><ul>
+<li><a href="#221-apimethod">2.2.1. API接口命名规范（method）</a></li>
+<li><a href="#222">2.2.2. 错误码</a></li>
+<li><a href="#223-api-demo">2.2.3. API DEMO 示例</a></li>
 </ul>
 </li>
 </ul>
@@ -1107,11 +1107,11 @@ body .markdown-body
 </li>
 </ul>
 </div>
-<h2 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>部署说明</h2>
+<h2 id="1"><a name="user-content-1" href="#1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. 部署说明</h2>
 <blockquote>
 <p>现有API基于laravel框架开发，本次介绍也针对laravel。可根据文档自行调整，以适用其他框架下使用</p>
 </blockquote>
-<h3 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>数据库相关</h3>
+<h3 id="11"><a name="user-content-11" href="#11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.1. 数据库相关</h3>
 <p>执行如下SQL语句</p>
 <div class="codehilite"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">prefix_apps</span><span class="o">`</span> <span class="p">(</span>
   <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">INT</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span> <span class="k">COMMENT</span> <span class="s1">&#39;自增长&#39;</span><span class="p">,</span>
@@ -1129,7 +1129,7 @@ body .markdown-body
 </pre></div>
 
 
-<h3 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>目录相关</h3>
+<h3 id="12"><a name="user-content-12" href="#12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.2. 目录相关</h3>
 <table>
 <thead>
 <tr>
@@ -1160,14 +1160,14 @@ body .markdown-body
 </tr>
 </tbody>
 </table>
-<h2 id="api_1"><a name="user-content-api_1" href="#api_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>API文档及开发规范</h2>
-<h3 id="api_2"><a name="user-content-api_2" href="#api_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>API调用协议</h3>
-<h4 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>请求地址及请求方式</h4>
+<h2 id="2-api"><a name="user-content-2-api" href="#2-api" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. API文档及开发规范</h2>
+<h3 id="21-api"><a name="user-content-21-api" href="#21-api" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1. API调用协议</h3>
+<h4 id="211"><a name="user-content-211" href="#211" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1.1. 请求地址及请求方式</h4>
 <blockquote>
-<p>请求地址：<code>/api/router</code>;<br />
-请求方式：<code>POST</code>/<code>GET</code></p>
+<p>请求地址：<code>/api/router</code>;</p>
+<p>请求方式：<code>POST</code>/<code>GET</code></p>
 </blockquote>
-<h4 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>公共参数</h4>
+<h4 id="212"><a name="user-content-212" href="#212" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1.2. 公共参数</h4>
 <table>
 <thead>
 <tr>
@@ -1216,18 +1216,18 @@ body .markdown-body
 </tr>
 </tbody>
 </table>
-<h4 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>业务参数</h4>
+<h4 id="213"><a name="user-content-213" href="#213" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1.3. 业务参数</h4>
 <blockquote>
 <p>API调用除了必须包含公共参数外，如果API本身有业务级的参数也必须传入，每个API的业务级参数请考API文档说明。</p>
 </blockquote>
-<h4 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>签名规则</h4>
+<h4 id="214"><a name="user-content-214" href="#214" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1.4. 签名规则</h4>
 <ul>
 <li>对所有API请求参数（包括公共参数和请求参数，但除去<code>sign</code>参数），根据参数名称的ASCII码表的顺序排序。如：<code>foo=1, bar=2, foo_bar=3, foobar=4</code>排序后的顺序是<code>bar=2, foo=1, foo_bar=3, foobar=4</code>。</li>
 <li>将排序好的参数名和参数值拼装在一起，根据上面的示例得到的结果为：bar2foo1foo_bar3foobar4。</li>
 <li>把拼装好的字符串采用utf-8编码，使用签名算法对编码后的字节流进行摘要。如果使用<code>MD5</code>算法，则需要在拼装的字符串前后加上app的<code>secret</code>后，再进行摘要，如：md5(secret+bar2foo1foo_bar3foobar4+secret)</li>
 <li>将摘要得到的字节结果使用大写表示</li>
 </ul>
-<h4 id="_8"><a name="user-content-_8" href="#_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>返回结果</h4>
+<h4 id="215"><a name="user-content-215" href="#215" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1.5. 返回结果</h4>
 <div class="codehilite"><pre><span class="err">//</span> <span class="err">成功</span>
 <span class="p">{</span>
     <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -1247,8 +1247,8 @@ body .markdown-body
 </pre></div>
 
 
-<h3 id="api_3"><a name="user-content-api_3" href="#api_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>API开发规范</h3>
-<h4 id="apimethod"><a name="user-content-apimethod" href="#apimethod" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>API接口命名规范（method）</h4>
+<h3 id="22-api"><a name="user-content-22-api" href="#22-api" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.2. API开发规范</h3>
+<h4 id="221-apimethod"><a name="user-content-221-apimethod" href="#221-apimethod" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.2.1. API接口命名规范（method）</h4>
 <ul>
 <li>接口名称统一小写字母</li>
 <li>多单词用<code>.</code>隔开</li>
@@ -1259,7 +1259,7 @@ body .markdown-body
 </ul>
 </li>
 </ul>
-<h4 id="_9"><a name="user-content-_9" href="#_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>错误码</h4>
+<h4 id="222"><a name="user-content-222" href="#222" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.2.2. 错误码</h4>
 <blockquote>
 <p>错误码配置：<code>app/Services/ApiServer/Error.php</code></p>
 </blockquote>
@@ -1365,5 +1365,5 @@ body .markdown-body
 </tr>
 </tbody>
 </table>
-<h4 id="api-demo"><a name="user-content-api-demo" href="#api-demo" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>API DEMO 示例</h4>
+<h4 id="223-api-demo"><a name="user-content-223-api-demo" href="#223-api-demo" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.2.3. API DEMO 示例</h4>
 <p>文件路径：<code>app/Services/ApiServer/Response/Demo.php</code></p></article></body></html>
