@@ -1,6 +1,6 @@
 # API服务端架构代码
 
-[TOC]
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 
 ## 1. 部署说明
 
