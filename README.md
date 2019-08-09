@@ -137,3 +137,15 @@ CREATE TABLE `prefix_apps` (
 #### 2.2.3. API DEMO 示例
 
 文件路径：`app/Services/ApiServer/Response/Demo.php`
+
+
+## 捐赠
+
+如果你觉得本扩展对你有帮助，请捐赠以表支持，谢谢~~
+
+<table>
+    <tr>
+        <td align="center"><img src="https://flc.io/static/images/wechat.jpg" width="220"><p>微信</p></td>
+        <td align="center"><img src="https://flc.io/static/images/alipay.jpg" width="220"><p>支付宝</p></td>
+    </tr>
+</table>
